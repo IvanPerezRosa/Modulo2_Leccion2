@@ -1,0 +1,376 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Gestion de Usuarios",
+    "description": "Esta API se encarga de Gestionar Usuarios",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Obtener los Usuarios",
+        "responses": {
+          "200": {
+            "description": "Lista de Usuarios obtenida"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea un nuevo Usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ID": {
+                    "type": "integer"
+                  },
+                  "nick": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario creado"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "Obtiene un Usuario por su ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario obtenido correctamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualiza un Usuario ya creado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ID": {
+                    "type": "integer"
+                  },
+                  "nick": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Elimina un Usuario por su ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Usuario eliminado"
+          }
+        }
+      }
+    },
+    "/users/{userId}/blog": {
+      "get": {
+        "summary": "Obtiene el blog del Usuario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog del Usuario obtenido"
+          }
+        }
+      }
+    },
+    "/users/{userId}/blog/article": {
+      "get": {
+        "summary": "Obtiene un Articulo dentro del Blog del Usuario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Articulo del Blog del Usuario obtenido"
+          }
+        }
+      }
+    },
+    "/users/{userId}/phone": {
+      "get": {
+        "summary": "Obtiene los Teléfonos del Usuario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Teléfonos del Usuario obtenidos"
+          }
+        }
+      }
+    },
+    "/users/{userId}/project": {
+      "get": {
+        "summary": "Obtiene los usuarios relacionados con el proyecto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuarios relacionados con el proyecto obtenidos"
+          }
+        }
+      }
+    },
+    "/users/{userId}/project/{projectId}/code": {
+      "get": {
+        "summary": "Obtiene el código de los Proyectos del Usuario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Codigo de los proyectos del Usuario obtenidos"
+          }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "summary": "Obtener los Proyectos",
+        "responses": {
+          "200": {
+            "description": "Lista de Proyectos obtenida"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea un nuevo Proyecto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ID": {
+                    "type": "integer"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "languaje": {
+                    "type": "string"
+                  },
+                  "open": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Proyecto creado"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}": {
+      "get": {
+        "summary": "Obtiene un Proyecto por su ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Proyecto obtenido correctamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualiza un Proyecto ya creado",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ID": {
+                    "type": "integer"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "languaje": {
+                    "type": "string"
+                  },
+                  "open": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Proyecto actualizado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Elimina un Proyecto por su ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Proyecto eliminado"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/users": {
+      "get": {
+        "summary": "Obtiene los Usuarios de un Proyecto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuarios del Proyecto obtenido"
+          }
+        }
+      }
+    }
+  }
+}
